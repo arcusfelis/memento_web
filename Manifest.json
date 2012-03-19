@@ -1,0 +1,35 @@
+{
+  "info" : 
+  {
+    "name" : "eqx",
+
+    "summary" : "eqx",
+    "description" : "Erlang with qooxdoo bindings.",
+    
+    "homepage" : "http://freeakk.github.com/",
+
+    "license" : "Apache 2.0",
+    "authors" : 
+    [
+      {
+        "name" : "Uvarov Michael (freeakk)",
+        "email" : "freeakk@gmail.com"
+      }
+    ],
+
+    "version" : "trunk",
+    "qooxdoo-versions": ["1.6"]
+  },
+  
+  "provides" : 
+  {
+    "namespace"   : "eqx",
+    "encoding"    : "utf-8",
+    "class"       : "q_src/class",
+    "resource"    : "q_src/resource",
+    "translation" : "q_src/translation",
+	"target"      : "priv/build",
+    "type"        : "application"
+  }
+}
+

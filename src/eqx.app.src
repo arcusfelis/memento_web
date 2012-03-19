@@ -1,0 +1,20 @@
+
+{application, eqx, [
+	{description, "qooxdoo in erlang."},
+	{vsn, "0.1.0"},
+	{modules, []},
+	{registered, [eqx_sup]},
+	{applications, [
+		kernel,
+		stdlib,
+		crypto,
+		public_key,
+		ssl,
+		cowboy,
+        cowboy_static,
+        bullet,
+        jsx
+	]},
+    {mod, {eqx_app, []}},
+	{env, []}
+]}.

@@ -1,0 +1,15 @@
+ebin/*
+deps/*
+*.swp
+*.dump
+*.trace  
+*.o
+*.so
+*.dll
+.eunit
+doc/README.md
+
+q_bin/*
+q_deps/*
+priv/html/resource/*
+priv/html/script/*
