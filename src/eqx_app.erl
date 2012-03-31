@@ -5,6 +5,10 @@
 -export([start/0, start/2, stop/1]).
 
 start() ->
+    lager:start(),
+
+    application:start(gproc),
+
     application:start(crypto),
     application:start(public_key),
     application:start(ssl),

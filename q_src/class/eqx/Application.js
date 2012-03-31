@@ -43,6 +43,10 @@ qx.Class.define("eqx.Application",
       // Call super class
       this.base(arguments);
 
+      var remote = document.remote = new eqx.Remote();
+      remote.finalize();
+      remote.sendText("hello");
+
       // Enable logging in debug variant
 //    if (qx.core.Environment.get("qx.debug"))
 //    {

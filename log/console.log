@@ -1,0 +1,18 @@
+2012-03-31 14:50:23.253 [info] <0.6.0> Application lager started on node eqx@omicron
+2012-03-31 14:50:28.717 [info] <0.206.0>@eqx_stream_handler:stream:18 Message recived <<116>>
+2012-03-31 14:58:16.521 [info] <0.6.0> Application lager started on node eqx@omicron
+2012-03-31 14:58:35.341 [info] <0.6.0> Application lager started on node eqx@omicron
+2012-03-31 14:58:35.426 [info] <0.6.0> Application gproc started on node eqx@omicron
+2012-03-31 14:58:35.472 [info] <0.6.0> Application crypto started on node eqx@omicron
+2012-03-31 14:58:35.483 [info] <0.6.0> Application public_key started on node eqx@omicron
+2012-03-31 14:58:35.527 [info] <0.6.0> Application ssl started on node eqx@omicron
+2012-03-31 14:58:35.547 [info] <0.6.0> Application cowboy started on node eqx@omicron
+2012-03-31 14:58:35.549 [info] <0.6.0> Application nicedecimal started on node eqx@omicron
+2012-03-31 14:58:35.552 [info] <0.6.0> Application jsx started on node eqx@omicron
+2012-03-31 14:58:35.558 [info] <0.6.0> Application bullet started on node eqx@omicron
+2012-03-31 14:58:35.584 [info] <0.6.0> Application sendfile started on node eqx@omicron
+2012-03-31 14:58:35.589 [info] <0.6.0> Application cowboy_static started on node eqx@omicron
+2012-03-31 14:58:35.668 [info] <0.6.0> Application eqx started on node eqx@omicron
+2012-03-31 15:00:06.024 [info] <0.216.0>@eqx_stream_handler:stream:18 Message recieved <<"t">>
+2012-03-31 15:00:14.589 [info] <0.216.0>@eqx_stream_handler:stream:18 Message recieved <<"t">>
+2012-03-31 15:23:20.055 [info] <0.250.0>@eqx_stream_handler:stream:18 Message recieved <<"hello">>

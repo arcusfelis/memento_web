@@ -7,6 +7,8 @@
 	{applications, [
 		kernel,
 		stdlib,
+        compiler,
+        lager,
 		crypto,
 		public_key,
 		ssl,
