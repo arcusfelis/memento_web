@@ -1,5 +1,5 @@
 
--module(eqx_sup).
+-module(memw_sup).
 -behaviour(supervisor).
 
 -export([start_link/0]). %% API.

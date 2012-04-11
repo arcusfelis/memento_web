@@ -1,5 +1,5 @@
 {
-  "name"    : "eqx",
+  "name"    : "memento_web",
 
   "include" :
   [
@@ -36,7 +36,7 @@
 
   "let" :
   {
-    "APPLICATION"  : "eqx",
+    "APPLICATION"  : "memento_web",
     "QOOXDOO_PATH" : "q_deps/qooxdoo",
     "QXTHEME"      : "qx.theme.Modern",
     "API_EXCLUDE"  : ["qx.test.*", "${APPLICATION}.theme.*", 
@@ -81,7 +81,7 @@
       {
         "paths" :
         {
-          "file"            : "priv/html/script/eqx.js",
+          "file"            : "priv/html/script/memento_web.js",
           "app-root"        : "q_src",
           "gzip"            : false
         },
@@ -104,7 +104,7 @@
       {
         "paths" :
         {
-          "file"            : "priv/html/script/eqx.js",
+          "file"            : "priv/html/script/memento_web.js",
           "app-root"        : "q_src",
           "gzip"            : false
         },
@@ -127,7 +127,7 @@
       {
         "paths" :
         {
-          "file"            : "priv/html/script/eqx.js",
+          "file"            : "priv/html/script/memento_web.js",
           "app-root"        : "q_src",
           "gzip"            : false
         },

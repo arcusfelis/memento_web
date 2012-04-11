@@ -1,4 +1,4 @@
--module(eqx_default_handler).
+-module(memw_default_handler).
 -behaviour(cowboy_http_handler).
 -export([init/3, handle/2, terminate/2]).
 

@@ -1,4 +1,4 @@
-qx.Class.define("eqx.Remote",
+qx.Class.define("memento_web.Remote",
 {
   extend : qx.core.Object,
 
@@ -39,13 +39,14 @@ qx.Class.define("eqx.Remote",
     },
 
 
+
     /**
      * TODOC
      *
      * @param query {var} TODOC
      */
     sendJSON : function(query) {
-      this.__bullet.sendText(qx.lang.Json.stringify(query));
+      this.sendText(qx.lang.Json.stringify(query));
     },
 
 
@@ -81,6 +82,50 @@ qx.Class.define("eqx.Remote",
         }
     },
 
+    /* Initially send information about the object */
+    registerObject : function(item)
+    {
+        var hash = item.toHashCode();
+        this.sendJSON([{"type" : "registerObject",
+            "hash" : hash, "path" : item.classname.split(".")}]);
+    },
+
+
+    /* Message handler */
+    fromErlang : function(action)
+    {
+        var hash = action.hash;
+        var item = qx.core.ObjectRegistry.fromHashCode(hash);
+        if (item == null) 
+        {
+            this.warn("Item not found" + hash);
+            return false;
+        }
+        switch (action.type)
+        {
+            case "fireEvent":
+                var event = action.data;
+                if (event.data)
+                    item.fireDataEvent(event.type, event.data);
+                else 
+                    item.fireEvent(event.type);
+                break;
+
+            case "addListener":
+                var event = action.data;
+                item.addListener(event.type, this.__listener, this);
+                break;
+            
+        }
+    },
+
+
+    /* Receive events from qooxdoo objects */
+    __listener : function(e)
+    {
+        console.dir(e);
+    },
+
 
     /**
      * TODOC
@@ -114,7 +159,7 @@ qx.Class.define("eqx.Remote",
       {
         store.info('WebSocket: ' + e.data);
         var parsedData = qx.lang.Json.parse(e.data);
-        store.fireDataEvent(parsedData.event, parsedData.data);
+        store.fromErlang(parsedData);
       };
 
       bullet.onheartbeat = function() {
@@ -149,10 +194,6 @@ qx.Class.define("eqx.Remote",
       this.__bullet.onclose = function() {};
       delete this.__bullet;
     }
-  },
-
-  events :
-  {
   }
 });
 

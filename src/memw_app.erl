@@ -1,8 +1,9 @@
 %% Feel free to use, reuse and abuse the code in this file.
 
--module(eqx_app).
+-module(memw_app).
 -behaviour(application).
 -export([start/0, start/2, stop/1]).
+-define(APP, memento_web).
 
 start() ->
     lager:start(),
@@ -20,12 +21,12 @@ start() ->
     application:start(bullet),
     application:start(sendfile),
     application:start(cowboy_static),
-    application:start(eqx).
+    application:start(memento_web).
 
 
 %% TODO: use envs for config
 start(_Type, _Args) ->
-    PrivDir = code:priv_dir(eqx),
+    PrivDir = code:priv_dir(?APP),
     BuildDir = abs_path(filename:join(
             [PrivDir, "html"])),
     JQueryDir = abs_path(filename:join(
@@ -48,8 +49,8 @@ start(_Type, _Args) ->
         {sendfile, false}]),
 
     StreamRule = {[<<"stream">>], bullet_handler, 
-                  [{handler, eqx_stream_handler}]},
-    DefaultRule = {[], eqx_default_handler, []},
+                  [{handler, memw_stream_handler}]},
+    DefaultRule = {[], memw_default_handler, []},
 	%% These rules are active only in a source version!
 	SourceRules = 
 		[ cowboy_static:rule([
@@ -57,11 +58,11 @@ start(_Type, _Args) ->
           		{prefix, "priv/html"}, 
           		{sendfile, false}])
 		, cowboy_static:rule([
-          		{dir, code:lib_dir(eqx, q_deps)}, 
+          		{dir, code:lib_dir(?APP, q_deps)}, 
           		{prefix, "q_deps"}, 
           		{sendfile, false}])
 		, cowboy_static:rule([
-          		{dir, code:lib_dir(eqx, q_src)}, 
+          		{dir, code:lib_dir(?APP, q_src)}, 
           		{prefix, "q_src"}, 
           		{sendfile, false}])],
 
@@ -70,7 +71,7 @@ start(_Type, _Args) ->
 			++ SourceRules
 			++ [RootRule]}
     ],
-    cowboy:start_listener(eqx_http, 100,
+    cowboy:start_listener(memw_http, 100,
     	cowboy_tcp_transport, [{port, 1080}],
     	cowboy_http_protocol, [{dispatch, Dispatch}]
     ),
@@ -80,7 +81,7 @@ start(_Type, _Args) ->
 %       	{keyfile, "priv/ssl/key.pem"}, {password, "cowboy"}],
 %       cowboy_http_protocol, [{dispatch, Dispatch}]
 %   ),
-    eqx_sup:start_link().
+    memw_sup:start_link().
 
 stop(_State) ->
     ok.

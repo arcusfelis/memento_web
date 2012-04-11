@@ -1,10 +1,10 @@
 {
   "info" : 
   {
-    "name" : "eqx",
+    "name" : "memento_web",
 
-    "summary" : "eqx",
-    "description" : "Erlang with qooxdoo bindings.",
+    "summary" : "memento_web",
+    "description" : "",
     
     "homepage" : "http://freeakk.github.com/",
 
@@ -23,7 +23,7 @@
   
   "provides" : 
   {
-    "namespace"   : "eqx",
+    "namespace"   : "memento_web",
     "encoding"    : "utf-8",
     "class"       : "q_src/class",
     "resource"    : "q_src/resource",

@@ -10,14 +10,14 @@
 
 /* ************************************************************************
 
-#asset(eqx/*)
+#asset(memento_web/*)
 
 ************************************************************************ */
 
 /**
- * This is the main application class of your custom application "eqx"
+ * This is the main application class of your custom application "memento_web"
  */
-qx.Class.define("eqx.Application",
+qx.Class.define("memento_web.Application",
 {
   extend : qx.application.Standalone,
 
@@ -43,10 +43,6 @@ qx.Class.define("eqx.Application",
       // Call super class
       this.base(arguments);
 
-      var remote = document.remote = new eqx.Remote();
-      remote.finalize();
-      remote.sendText("hello");
-
       // Enable logging in debug variant
 //    if (qx.core.Environment.get("qx.debug"))
 //    {
@@ -66,7 +62,7 @@ qx.Class.define("eqx.Application",
       */
 
       // Initialize the compositor
-      this.__container = new eqx.Container(this);
+      this.__container = new memento_web.Container(this);
       this.getRoot().add(this.__container, { edge : 0 });
     },
 

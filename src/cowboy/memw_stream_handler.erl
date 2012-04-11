@@ -1,4 +1,4 @@
--module(eqx_stream_handler).
+-module(memw_stream_handler).
 -export([init/4, stream/3, info/3, terminate/2]).
 -export([send/2]).
 
@@ -12,11 +12,33 @@ init(_Transport, Req, _Opts, _Active) ->
 
     {ok, Req, State}.
 
+%   {<<"type">>,<<"registerObject">>},{<<"hash">>,<<"216-0">>},
+%   {<<"path">>,[<<"memento_web">>,<<"agent">>,<<"Table">>]}
+
+
+-record(action, {type, hash, path}).
+
+
+json_to_action(JsonProps) ->
+    #action{
+        type = proplists:get_value(<<"type">>, JsonProps),
+        hash = proplists:get_value(<<"hash">>, JsonProps),
+        path = proplists:get_value(<<"path">>, JsonProps)
+    }.
+
 
 %% Called when a message from javascript client was recieved
 stream(Data, Req, State) ->
     lager:info("Message recieved ~p~n", [Data]),
-    {reply, <<>>, Req, State}.
+    DecodedData = jsx:json_to_term(Data),
+    lager:info("JSON: ~p~n", [DecodedData]),
+    Action = json_to_action(DecodedData),
+    handle_action(Action, Req, State).
+
+
+handle_action(#action{type = <<"registerObject">>}, Req, State) ->
+    {ok, Req, State}.
+
 
 %stream(<<"all_torrents">> = _Data, Req, State) ->
 %    Data = ?HUB:all_torrents(),
@@ -27,7 +49,7 @@ stream(Data, Req, State) ->
 %    {reply, EncodedRespond, Req, State};
 %
 %stream(<<"all_peers">> = _Data, Req, State) ->
-%    Data = eqx_peers:all_peers(),
+%    Data = memw_peers:all_peers(),
 %    Respond = [{'event', <<"peerDataLoadCompleted">>} 
 %              ,{'data', [{'rows', Data}]}
 %              ],

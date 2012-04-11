@@ -3,9 +3,6 @@ deps/*
 *.swp
 *.dump
 *.trace  
-*.o
-*.so
-*.dll
 .eunit
 doc/README.md
 

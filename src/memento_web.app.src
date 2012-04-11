@@ -1,9 +1,9 @@
 
-{application, eqx, [
+{application, memento_web, [
 	{description, "qooxdoo in erlang."},
 	{vsn, "0.1.0"},
 	{modules, []},
-	{registered, [eqx_sup]},
+	{registered, [memw_sup]},
 	{applications, [
 		kernel,
 		stdlib,
@@ -17,6 +17,6 @@
         bullet,
         jsx
 	]},
-    {mod, {eqx_app, []}},
+    {mod, {memw_app, []}},
 	{env, []}
 ]}.

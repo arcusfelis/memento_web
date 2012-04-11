@@ -16,3 +16,176 @@
 2012-03-31 15:00:06.024 [info] <0.216.0>@eqx_stream_handler:stream:18 Message recieved <<"t">>
 2012-03-31 15:00:14.589 [info] <0.216.0>@eqx_stream_handler:stream:18 Message recieved <<"t">>
 2012-03-31 15:23:20.055 [info] <0.250.0>@eqx_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 18:41:13.908 [info] <0.6.0> Application lager started on node memw@omicron
+2012-03-31 18:41:13.939 [info] <0.6.0> Application gproc started on node memw@omicron
+2012-03-31 18:41:13.978 [info] <0.6.0> Application crypto started on node memw@omicron
+2012-03-31 18:41:13.992 [info] <0.6.0> Application public_key started on node memw@omicron
+2012-03-31 18:41:14.054 [info] <0.6.0> Application ssl started on node memw@omicron
+2012-03-31 18:41:14.087 [info] <0.6.0> Application cowboy started on node memw@omicron
+2012-03-31 18:41:14.089 [info] <0.6.0> Application nicedecimal started on node memw@omicron
+2012-03-31 18:41:14.092 [info] <0.6.0> Application jsx started on node memw@omicron
+2012-03-31 18:41:14.098 [info] <0.6.0> Application bullet started on node memw@omicron
+2012-03-31 18:41:14.122 [info] <0.6.0> Application sendfile started on node memw@omicron
+2012-03-31 18:41:14.129 [info] <0.6.0> Application cowboy_static started on node memw@omicron
+2012-03-31 18:41:14.138 [error] <0.98.0> CRASH REPORT Process <0.98.0> with 0 neighbours crashed with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{filename,join,[{error,bad_name},"html"],[{file,"filename.erl"},{line,406}]},{filename,join,1,[{file,"filename.erl"},{line,393}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,29}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:41:14.242 [info] <0.6.0> Application memw exited with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{filename,join,[{error,bad_name},"html"],[{file,"filename.erl"},{line,406}]},{filename,join,1,[{file,"filename.erl"},{line,393}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,29}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:43:51.288 [info] <0.6.0> Application lager started on node memw@omicron
+2012-03-31 18:43:51.317 [info] <0.6.0> Application gproc started on node memw@omicron
+2012-03-31 18:43:51.357 [info] <0.6.0> Application crypto started on node memw@omicron
+2012-03-31 18:43:51.365 [info] <0.6.0> Application public_key started on node memw@omicron
+2012-03-31 18:43:51.403 [info] <0.6.0> Application ssl started on node memw@omicron
+2012-03-31 18:43:51.419 [info] <0.6.0> Application cowboy started on node memw@omicron
+2012-03-31 18:43:51.423 [info] <0.6.0> Application nicedecimal started on node memw@omicron
+2012-03-31 18:43:51.423 [info] <0.6.0> Application jsx started on node memw@omicron
+2012-03-31 18:43:51.427 [info] <0.6.0> Application bullet started on node memw@omicron
+2012-03-31 18:43:51.438 [info] <0.6.0> Application sendfile started on node memw@omicron
+2012-03-31 18:43:51.442 [info] <0.6.0> Application cowboy_static started on node memw@omicron
+2012-03-31 18:46:43.282 [info] <0.6.0> Application lager started on node memw@omicron
+2012-03-31 18:46:43.310 [info] <0.6.0> Application gproc started on node memw@omicron
+2012-03-31 18:46:43.346 [info] <0.6.0> Application crypto started on node memw@omicron
+2012-03-31 18:46:43.355 [info] <0.6.0> Application public_key started on node memw@omicron
+2012-03-31 18:46:43.393 [info] <0.6.0> Application ssl started on node memw@omicron
+2012-03-31 18:46:43.410 [info] <0.6.0> Application cowboy started on node memw@omicron
+2012-03-31 18:46:43.412 [info] <0.6.0> Application nicedecimal started on node memw@omicron
+2012-03-31 18:46:43.416 [info] <0.6.0> Application jsx started on node memw@omicron
+2012-03-31 18:46:43.420 [info] <0.6.0> Application bullet started on node memw@omicron
+2012-03-31 18:46:43.430 [info] <0.6.0> Application sendfile started on node memw@omicron
+2012-03-31 18:46:43.434 [info] <0.6.0> Application cowboy_static started on node memw@omicron
+2012-03-31 18:47:30.186 [info] <0.6.0> Application lager started on node memw@omicron
+2012-03-31 18:47:30.215 [info] <0.6.0> Application gproc started on node memw@omicron
+2012-03-31 18:47:30.270 [info] <0.6.0> Application crypto started on node memw@omicron
+2012-03-31 18:47:30.295 [info] <0.6.0> Application public_key started on node memw@omicron
+2012-03-31 18:47:30.404 [info] <0.6.0> Application ssl started on node memw@omicron
+2012-03-31 18:47:30.443 [info] <0.6.0> Application cowboy started on node memw@omicron
+2012-03-31 18:47:30.448 [info] <0.6.0> Application nicedecimal started on node memw@omicron
+2012-03-31 18:47:30.456 [info] <0.6.0> Application jsx started on node memw@omicron
+2012-03-31 18:47:30.468 [info] <0.6.0> Application bullet started on node memw@omicron
+2012-03-31 18:47:30.489 [info] <0.6.0> Application sendfile started on node memw@omicron
+2012-03-31 18:47:30.499 [info] <0.6.0> Application cowboy_static started on node memw@omicron
+2012-03-31 18:48:00.401 [info] <0.6.0> Application lager started on node memw@omicron
+2012-03-31 18:48:00.430 [info] <0.6.0> Application gproc started on node memw@omicron
+2012-03-31 18:48:00.469 [info] <0.6.0> Application crypto started on node memw@omicron
+2012-03-31 18:48:00.477 [info] <0.6.0> Application public_key started on node memw@omicron
+2012-03-31 18:48:00.511 [info] <0.6.0> Application ssl started on node memw@omicron
+2012-03-31 18:48:00.527 [info] <0.6.0> Application cowboy started on node memw@omicron
+2012-03-31 18:48:00.529 [info] <0.6.0> Application nicedecimal started on node memw@omicron
+2012-03-31 18:48:00.531 [info] <0.6.0> Application jsx started on node memw@omicron
+2012-03-31 18:48:00.535 [info] <0.6.0> Application bullet started on node memw@omicron
+2012-03-31 18:48:00.543 [info] <0.6.0> Application sendfile started on node memw@omicron
+2012-03-31 18:48:00.546 [info] <0.6.0> Application cowboy_static started on node memw@omicron
+2012-03-31 18:48:00.558 [error] <0.98.0> CRASH REPORT Process <0.98.0> with 0 neighbours crashed with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{cowboy_static,path_to_segments,[{error,bad_name}],[{file,"src/cowboy_static.erl"},{line,353}]},{cowboy_static,rule,1,[{file,"src/cowboy_static.erl"},{line,68}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,59}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:48:00.632 [info] <0.6.0> Application memento_web exited with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{cowboy_static,path_to_segments,[{error,bad_name}],[{file,"src/cowboy_static.erl"},{line,353}]},{cowboy_static,rule,1,[{file,"src/cowboy_static.erl"},{line,68}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,59}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:48:52.135 [info] <0.6.0> Application lager started on node memw@omicron
+2012-03-31 18:48:52.175 [info] <0.6.0> Application gproc started on node memw@omicron
+2012-03-31 18:48:52.231 [info] <0.6.0> Application crypto started on node memw@omicron
+2012-03-31 18:48:52.244 [info] <0.6.0> Application public_key started on node memw@omicron
+2012-03-31 18:48:52.285 [info] <0.6.0> Application ssl started on node memw@omicron
+2012-03-31 18:48:52.302 [info] <0.6.0> Application cowboy started on node memw@omicron
+2012-03-31 18:48:52.304 [info] <0.6.0> Application nicedecimal started on node memw@omicron
+2012-03-31 18:48:52.307 [info] <0.6.0> Application jsx started on node memw@omicron
+2012-03-31 18:48:52.310 [info] <0.6.0> Application bullet started on node memw@omicron
+2012-03-31 18:48:52.319 [info] <0.6.0> Application sendfile started on node memw@omicron
+2012-03-31 18:48:52.322 [info] <0.6.0> Application cowboy_static started on node memw@omicron
+2012-03-31 18:48:52.334 [error] <0.98.0> CRASH REPORT Process <0.98.0> with 0 neighbours crashed with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{cowboy_static,path_to_segments,[{error,bad_name}],[{file,"src/cowboy_static.erl"},{line,353}]},{cowboy_static,rule,1,[{file,"src/cowboy_static.erl"},{line,68}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,59}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:48:52.412 [info] <0.6.0> Application memento_web exited with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{cowboy_static,path_to_segments,[{error,bad_name}],[{file,"src/cowboy_static.erl"},{line,353}]},{cowboy_static,rule,1,[{file,"src/cowboy_static.erl"},{line,68}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,59}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:49:54.330 [info] <0.6.0> Application lager started on node memento_web@omicron
+2012-03-31 18:49:54.364 [info] <0.6.0> Application gproc started on node memento_web@omicron
+2012-03-31 18:49:54.403 [info] <0.6.0> Application crypto started on node memento_web@omicron
+2012-03-31 18:49:54.413 [info] <0.6.0> Application public_key started on node memento_web@omicron
+2012-03-31 18:49:54.450 [info] <0.6.0> Application ssl started on node memento_web@omicron
+2012-03-31 18:49:54.466 [info] <0.6.0> Application cowboy started on node memento_web@omicron
+2012-03-31 18:49:54.468 [info] <0.6.0> Application nicedecimal started on node memento_web@omicron
+2012-03-31 18:49:54.471 [info] <0.6.0> Application jsx started on node memento_web@omicron
+2012-03-31 18:49:54.476 [info] <0.6.0> Application bullet started on node memento_web@omicron
+2012-03-31 18:49:54.485 [info] <0.6.0> Application sendfile started on node memento_web@omicron
+2012-03-31 18:49:54.489 [info] <0.6.0> Application cowboy_static started on node memento_web@omicron
+2012-03-31 18:49:54.500 [error] <0.98.0> CRASH REPORT Process <0.98.0> with 0 neighbours crashed with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{cowboy_static,path_to_segments,[{error,bad_name}],[{file,"src/cowboy_static.erl"},{line,353}]},{cowboy_static,rule,1,[{file,"src/cowboy_static.erl"},{line,68}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,59}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:49:54.548 [info] <0.6.0> Application memento_web exited with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{cowboy_static,path_to_segments,[{error,bad_name}],[{file,"src/cowboy_static.erl"},{line,353}]},{cowboy_static,rule,1,[{file,"src/cowboy_static.erl"},{line,68}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,59}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:51:09.108 [info] <0.6.0> Application lager started on node memento_web@omicron
+2012-03-31 18:51:09.137 [info] <0.6.0> Application gproc started on node memento_web@omicron
+2012-03-31 18:51:09.175 [info] <0.6.0> Application crypto started on node memento_web@omicron
+2012-03-31 18:51:09.183 [info] <0.6.0> Application public_key started on node memento_web@omicron
+2012-03-31 18:51:09.218 [info] <0.6.0> Application ssl started on node memento_web@omicron
+2012-03-31 18:51:09.235 [info] <0.6.0> Application cowboy started on node memento_web@omicron
+2012-03-31 18:51:09.237 [info] <0.6.0> Application nicedecimal started on node memento_web@omicron
+2012-03-31 18:51:09.240 [info] <0.6.0> Application jsx started on node memento_web@omicron
+2012-03-31 18:51:09.244 [info] <0.6.0> Application bullet started on node memento_web@omicron
+2012-03-31 18:51:09.252 [info] <0.6.0> Application sendfile started on node memento_web@omicron
+2012-03-31 18:51:09.257 [info] <0.6.0> Application cowboy_static started on node memento_web@omicron
+2012-03-31 18:51:09.269 [error] <0.98.0> CRASH REPORT Process <0.98.0> with 0 neighbours crashed with reason: {bad_return,{{memw_app,start,[normal,[]]},{'EXIT',{function_clause,[{cowboy_static,path_to_segments,[{error,bad_name}],[{file,"src/cowboy_static.erl"},{line,353}]},{cowboy_static,rule,1,[{file,"src/cowboy_static.erl"},{line,68}]},{memw_app,start,2,[{file,"src/memw_app.erl"},{line,59}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,274}]}]}}}}
+2012-03-31 18:51:32.859 [info] <0.6.0> Application lager started on node memento_web@omicron
+2012-03-31 18:51:32.887 [info] <0.6.0> Application gproc started on node memento_web@omicron
+2012-03-31 18:51:32.925 [info] <0.6.0> Application crypto started on node memento_web@omicron
+2012-03-31 18:51:32.937 [info] <0.6.0> Application public_key started on node memento_web@omicron
+2012-03-31 18:51:32.993 [info] <0.6.0> Application ssl started on node memento_web@omicron
+2012-03-31 18:51:33.021 [info] <0.6.0> Application cowboy started on node memento_web@omicron
+2012-03-31 18:51:33.025 [info] <0.6.0> Application nicedecimal started on node memento_web@omicron
+2012-03-31 18:51:33.032 [info] <0.6.0> Application jsx started on node memento_web@omicron
+2012-03-31 18:51:33.040 [info] <0.6.0> Application bullet started on node memento_web@omicron
+2012-03-31 18:51:33.054 [info] <0.6.0> Application sendfile started on node memento_web@omicron
+2012-03-31 18:51:33.062 [info] <0.6.0> Application cowboy_static started on node memento_web@omicron
+2012-03-31 18:51:33.175 [info] <0.6.0> Application memento_web started on node memento_web@omicron
+2012-03-31 18:51:36.190 [info] <0.208.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:08:26.620 [info] <0.229.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:09:04.548 [info] <0.233.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:10:43.210 [info] <0.237.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:11:10.768 [info] <0.240.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:11:46.186 [info] <0.244.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:12:01.194 [info] <0.248.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:12:15.230 [info] <0.253.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:12:43.872 [info] <0.257.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:12:56.364 [info] <0.260.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:15:02.044 [info] <0.267.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:23:20.398 [info] <0.278.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:23:39.332 [info] <0.282.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:25:14.511 [info] <0.287.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-03-31 19:28:12.778 [info] <0.295.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-04-02 14:41:36.842 [info] <0.6.0> Application lager started on node memento_web@omicron
+2012-04-02 14:41:36.899 [info] <0.6.0> Application gproc started on node memento_web@omicron
+2012-04-02 14:41:36.944 [info] <0.6.0> Application crypto started on node memento_web@omicron
+2012-04-02 14:41:36.970 [info] <0.6.0> Application public_key started on node memento_web@omicron
+2012-04-02 14:41:37.058 [info] <0.6.0> Application ssl started on node memento_web@omicron
+2012-04-02 14:41:37.155 [info] <0.6.0> Application cowboy started on node memento_web@omicron
+2012-04-02 14:41:37.176 [info] <0.6.0> Application nicedecimal started on node memento_web@omicron
+2012-04-02 14:41:37.182 [info] <0.6.0> Application jsx started on node memento_web@omicron
+2012-04-02 14:41:37.195 [info] <0.6.0> Application bullet started on node memento_web@omicron
+2012-04-02 14:41:37.243 [info] <0.6.0> Application sendfile started on node memento_web@omicron
+2012-04-02 14:41:37.260 [info] <0.6.0> Application cowboy_static started on node memento_web@omicron
+2012-04-02 14:41:37.392 [info] <0.6.0> Application memento_web started on node memento_web@omicron
+2012-04-02 14:42:08.341 [error] <0.205.0> ** Handler memw_default_handler terminating in init/3
+   for the reason error:undef
+** Options were []
+** Request was {http_req,#Port<0.5550>,cowboy_tcp_transport,keepalive,<0.205.0>,'GET',{1,1},undefined,[<<"127">>,<<"0">>,<<"0">>,<<"1">>],undefined,<<"127.0.0.1">>,1080,[],undefined,<<"/">>,undefined,<<>>,[],[{'Cookie',<<"_boss_session=032f41bc7dcc7f0971991a84de4167629d2ef73e">>},{'Connection',<<"keep-alive">>},{'Accept-Charset',<<"ISO-8859-1,utf-8;q=0.7,*;q=0.7">>},{'Accept-Encoding',<<"gzip, deflate">>},{'Accept-Language',<<"en-us,en;q=0.5">>},{'Accept',<<"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8">>},{'User-Agent',<<"Mozilla/5.0 (X11; Linux i686; rv:8.0) Gecko/20100101 Firefox/8.0 Iceweasel/8.0">>},{'Host',<<"127.0.0.1">>}],[{'Connection',[<<"keep-alive">>]}],undefined,[],waiting,<<>>,waiting,[],<<>>,{#Fun<cowboy_http.urldecode.2>,crash}}
+** Stacktrace: [{memw_default_handler,init,[{tcp,http},{http_req,#Port<0.5550>,cowboy_tcp_transport,keepalive,<0.205.0>,'GET',{1,1},undefined,[<<"127">>,<<"0">>,<<"0">>,<<"1">>],undefined,<<"127.0.0.1">>,1080,[],undefined,<<"/">>,undefined,<<>>,[],[{'Cookie',<<"_boss_session=032f41bc7dcc7f0971991a84de4167629d2ef73e">>},{'Connection',<<"keep-alive">>},{'Accept-Charset',<<"ISO-8859-1,utf-8;q=0.7,*;q=0.7">>},{'Accept-Encoding',<<"gzip, deflate">>},{'Accept-Language',<<"en-us,en;q=0.5">>},{'Accept',<<"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8">>},{'User-Agent',<<"Mozilla/5.0 (X11; Linux i686; rv:8.0) Gecko/20100101 Firefox/8.0 Iceweasel/8.0">>},{'Host',<<"127.0.0.1">>}],[{'Connection',[<<"keep-alive">>]}],undefined,[],waiting,<<>>,waiting,[],<<>>,{#Fun<cowboy_http.urldecode.2>,crash}},[]],[]},{cowboy_http_protocol,handler_init,2,[{file,"src/cowboy_http_protocol.erl"},{line,243}]}]
+
+
+2012-04-02 14:46:10.651 [info] <0.6.0> Application lager started on node memento_web@omicron
+2012-04-02 14:46:10.680 [info] <0.6.0> Application gproc started on node memento_web@omicron
+2012-04-02 14:46:10.718 [info] <0.6.0> Application crypto started on node memento_web@omicron
+2012-04-02 14:46:10.726 [info] <0.6.0> Application public_key started on node memento_web@omicron
+2012-04-02 14:46:10.761 [info] <0.6.0> Application ssl started on node memento_web@omicron
+2012-04-02 14:46:10.833 [info] <0.6.0> Application cowboy started on node memento_web@omicron
+2012-04-02 14:46:10.856 [info] <0.6.0> Application nicedecimal started on node memento_web@omicron
+2012-04-02 14:46:10.864 [info] <0.6.0> Application jsx started on node memento_web@omicron
+2012-04-02 14:46:10.875 [info] <0.6.0> Application bullet started on node memento_web@omicron
+2012-04-02 14:46:10.901 [info] <0.6.0> Application sendfile started on node memento_web@omicron
+2012-04-02 14:46:10.917 [info] <0.6.0> Application cowboy_static started on node memento_web@omicron
+2012-04-02 14:46:10.986 [info] <0.6.0> Application memento_web started on node memento_web@omicron
+2012-04-02 14:46:19.191 [info] <0.208.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-04-02 14:46:41.481 [info] <0.6.0> Application lager started on node memento_web@omicron
+2012-04-02 14:46:41.510 [info] <0.6.0> Application gproc started on node memento_web@omicron
+2012-04-02 14:46:41.550 [info] <0.6.0> Application crypto started on node memento_web@omicron
+2012-04-02 14:46:41.558 [info] <0.6.0> Application public_key started on node memento_web@omicron
+2012-04-02 14:46:41.595 [info] <0.6.0> Application ssl started on node memento_web@omicron
+2012-04-02 14:46:41.612 [info] <0.6.0> Application cowboy started on node memento_web@omicron
+2012-04-02 14:46:41.614 [info] <0.6.0> Application nicedecimal started on node memento_web@omicron
+2012-04-02 14:46:41.616 [info] <0.6.0> Application jsx started on node memento_web@omicron
+2012-04-02 14:46:41.620 [info] <0.6.0> Application bullet started on node memento_web@omicron
+2012-04-02 14:46:41.629 [info] <0.6.0> Application sendfile started on node memento_web@omicron
+2012-04-02 14:46:41.635 [info] <0.6.0> Application cowboy_static started on node memento_web@omicron
+2012-04-02 14:46:41.703 [info] <0.6.0> Application memento_web started on node memento_web@omicron
+2012-04-02 15:14:46.898 [info] <0.208.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-04-02 15:15:58.349 [info] <0.214.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-04-02 15:16:35.325 [info] <0.218.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-04-02 15:17:49.735 [info] <0.223.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>
+2012-04-02 15:18:32.229 [info] <0.227.0>@memw_stream_handler:stream:18 Message recieved <<"hello">>

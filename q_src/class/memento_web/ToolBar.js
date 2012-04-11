@@ -11,7 +11,7 @@
 /**
  * The main tool bar widget
  */
-qx.Class.define("eqx.ToolBar",
+qx.Class.define("memento_web.ToolBar",
 {
   extend : qx.ui.toolbar.ToolBar,
 
@@ -23,7 +23,7 @@ qx.Class.define("eqx.ToolBar",
   */
 
   /**
-   * @param controller {eqx.Application} The main application class
+   * @param controller {memento_web.Application} The main application class
    */
   construct : function(controller)
   {
