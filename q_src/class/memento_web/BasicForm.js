@@ -17,6 +17,7 @@ qx.Class.define("memento_web.BasicForm",
       this.addButton(cancelButton);
 
       this.addListener("dataLoaded", this.__onDataLoaded, this);
+      this.addListener("dataUpdated", this.__onDataUpdated, this);
       this.addListener("changeState", this.updateButtonsState, this);
       this.updateButtonsState();
   },
@@ -81,8 +82,22 @@ qx.Class.define("memento_web.BasicForm",
         case "viewing":
         case "empty":
           this.fireDataEvent("dataRequest", {"id": id});
-          this.clear();
+          this.clear(true);
           this.setState("loading");
+          break;
+      }
+    },
+    
+    /**
+     * Load a new version of the data after submiting
+     */
+    __onDataUpdated : function(e)
+    {
+      switch (this.getState())
+      {
+        case "submiting":
+          this.setData(e.getData());
+          this.setState("viewing");
           break;
       }
     },
@@ -122,7 +137,10 @@ qx.Class.define("memento_web.BasicForm",
       this.__names = qx.Class.getProperties(clazz);
     },
 
-    clear : function()
+    /**
+     * If onlyClear = true, then state will not changed
+     */
+    clear : function(onlyClear)
     {
       var names = this.__names;
 
@@ -130,6 +148,9 @@ qx.Class.define("memento_web.BasicForm",
         this.__model.set(names[i], null);
 
       this.__hiddenData = null;
+
+      if (!onlyClear)
+          this.setState("empty");
     },
 
     /**
@@ -192,9 +213,10 @@ qx.Class.define("memento_web.BasicForm",
 
   events :
   {
+    "dataRequest" : "qx.event.type.Data",
     "dataLoaded" : "qx.event.type.Data",
     "dataSubmit" : "qx.event.type.Data",
-    "dataRequest" : "qx.event.type.Data",
+    "dataUpdated" : "qx.event.type.Data",
     // User start to edit the data
     "dataEditingStarted" : "qx.event.type.Event"
   }

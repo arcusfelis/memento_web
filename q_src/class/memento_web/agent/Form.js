@@ -6,6 +6,7 @@ qx.Class.define("memento_web.agent.Form",
   {
     this.base(arguments);
 
+    this.add(new qx.ui.form.TextField(), this.tr("Name"), null, "name");
     this.add(new qx.ui.form.TextField(), this.tr("Address"), null, "address");
     this.add(new memento_web.form.PortSpinner(), this.tr("Port"), null, "port");
     this.add(new qx.ui.form.TextField(), this.tr("Version"), null, "version");

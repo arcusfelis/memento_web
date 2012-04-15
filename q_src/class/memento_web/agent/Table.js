@@ -7,6 +7,7 @@ qx.Class.define("memento_web.agent.Table",
     var n2c =
     {
       "id"             : this.tr("Id"),
+      "name"           : this.tr("Name"),
       "address"        : this.tr("Address"),
       "port"           : this.tr("Port"),
       "version"        : this.tr("Version")
@@ -21,6 +22,7 @@ qx.Class.define("memento_web.agent.Table",
     var rb = tcm.getBehavior();
 
     rb.set(n2p.id,               { width:"1*", minWidth: 70 });
+    rb.set(n2p.name,             { width:"1*", minWidth: 100 });
     rb.set(n2p.address,          { width:"1*", minWidth: 100 });
     rb.set(n2p.port,             { width:"1*", minWidth: 50 });
     rb.set(n2p.version,          { width:"1*", minWidth: 50 });

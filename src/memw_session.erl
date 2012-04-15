@@ -183,7 +183,26 @@ handle_event(#memw_event{type = <<"dataRequest">>, data=[_|_]} = E, State) ->
             send_command(Cmd, State)
         end),
         State
-    end.
+    end;
+
+%% BasicForm wants to update data
+handle_event(#memw_event{type = <<"dataSubmit">>, data=[_|_]} = E, State) ->
+    %% Ready to write. More validation will be here.
+    async(fun() ->
+        #memw_event{hash=Hash, data=Data} = E,
+        %% The target of the event
+        #memw_form{type=Type} = get_object(Hash, State),
+        Name = memw_meta:type_to_record_name(Type),
+        Record = memw_json:json_to_record(Name, Data),
+        lager:info("Decoded record: ~p", [Record]),
+        m_store:write(Record),
+
+        %% Send new version of the record to the form       
+        EncRec = memw_json:record_to_json(Record),
+        Cmd = memw_stream_handler:fire_event(Hash, <<"dataUpdated">>, EncRec),
+        send_command(Cmd, State)
+    end),
+    State.
 
 
 async(F) ->

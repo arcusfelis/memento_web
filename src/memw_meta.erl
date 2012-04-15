@@ -1,6 +1,9 @@
 -module(memw_meta).
--export([type_to_table_name/1]).
+-export([ type_to_table_name/1
+        , type_to_record_name/1]).
 
+type_to_record_name(Type) -> 
+    type_to_table_name(Type).
 
 type_to_table_name(<<"manager">>) -> m_manager;
 type_to_table_name(<<"trap">>)    -> m_trap;
