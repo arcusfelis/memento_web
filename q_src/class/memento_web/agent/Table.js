@@ -1,22 +1,15 @@
-
-/**
- * The GUI definition of the qooxdoo unit test runner.
- */
 qx.Class.define("memento_web.agent.Table",
 {
   extend : memento_web.BasicTable,
 
-
-  /**
-   * @lint ignoreUndefined(qxc)
-   */
   construct : function()
   {
     var n2c =
     {
       "id"             : this.tr("Id"),
-      "ip"             : this.tr("IP"),
-      "port"           : this.tr("Port")
+      "address"        : this.tr("Address"),
+      "port"           : this.tr("Port"),
+      "version"        : this.tr("Version")
     };
 
 
@@ -28,15 +21,16 @@ qx.Class.define("memento_web.agent.Table",
     var rb = tcm.getBehavior();
 
     rb.set(n2p.id,               { width:"1*", minWidth: 70 });
-    rb.set(n2p.ip,               { width:"1*", minWidth: 100 });
+    rb.set(n2p.address,          { width:"1*", minWidth: 100 });
     rb.set(n2p.port,             { width:"1*", minWidth: 50 });
+    rb.set(n2p.version,          { width:"1*", minWidth: 50 });
 
     var tm = this.getTableModel();
 
     /* Set the special order of sorting in the table for composite types 
        of data. */
 
-    tm.setSortMethods(n2p.ip, memento_web.Helpers.buildIPComparator(n2p.ip));
+    tm.setSortMethods(n2p.address, memento_web.Helpers.buildIPComparator(n2p.address));
   },
 
   members : {}

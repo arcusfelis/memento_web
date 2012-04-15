@@ -33,6 +33,8 @@ qx.Class.define("memento_web.NavigationTree",
         "trap"   : new qx.ui.tree.TreeFile(this.tr("Traps"))
     };
 
+    this.__hashCode2Id = {};
+
     for (var id in this.__items)
     {
         var item = this.__items[id];
@@ -43,7 +45,7 @@ qx.Class.define("memento_web.NavigationTree",
 
   members: 
   {
-    __hashCode2Id : {},
+    __hashCode2Id : null,
 
     getIdByItem : function(item)
     {

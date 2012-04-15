@@ -2,28 +2,60 @@
 -export([init/4, stream/3, info/3, terminate/2]).
 -export([send/2]).
 
+-export([send_command/2]).
+-export([ fire_event/2
+        , fire_event/3
+        , add_listener/2]).
+
+-include_lib("memento_web/src/memento_web.hrl").
+
 -record(state, {
+    hub,
+    hub_mon
 }).
 
 
 init(_Transport, Req, _Opts, _Active) ->
-    State = #state{
-    },
+    State = #state{},
 
     {ok, Req, State}.
 
-%   {<<"type">>,<<"registerObject">>},{<<"hash">>,<<"216-0">>},
-%   {<<"path">>,[<<"memento_web">>,<<"agent">>,<<"Table">>]}
+json_to_record(JsonProps) ->
+    Schema = proplists:get_value(<<"schema">>, JsonProps),
+    lager:info("SCHEMA: ~p~n", [Schema]),
+    case Schema of
+    <<"auth">> -> 
+        json_to_auth(JsonProps);
+    <<"action">> ->
+        json_to_action(JsonProps);
+    <<"event">> ->
+        json_to_event(JsonProps)
+    end.
 
 
--record(action, {type, hash, path}).
+check_hash(Hash) when is_binary(Hash) -> Hash.
 
 
 json_to_action(JsonProps) ->
-    #action{
+    #memw_action{
         type = proplists:get_value(<<"type">>, JsonProps),
-        hash = proplists:get_value(<<"hash">>, JsonProps),
+        hash = check_hash(proplists:get_value(<<"hash">>, JsonProps)),
         path = proplists:get_value(<<"path">>, JsonProps)
+    }.
+
+json_to_auth(JsonProps) ->
+    #memw_auth{
+        hash = check_hash(proplists:get_value(<<"hash">>, JsonProps)),
+
+        %% The client already registered a session.
+        session_id = proplists:get_value(<<"session_id">>, JsonProps)
+    }.
+
+json_to_event(JsonProps) ->
+    #memw_event{
+        type = proplists:get_value(<<"type">>, JsonProps),
+        hash = check_hash(proplists:get_value(<<"hash">>, JsonProps)),
+        data = proplists:get_value(<<"data">>, JsonProps)
     }.
 
 
@@ -32,151 +64,54 @@ stream(Data, Req, State) ->
     lager:info("Message recieved ~p~n", [Data]),
     DecodedData = jsx:json_to_term(Data),
     lager:info("JSON: ~p~n", [DecodedData]),
-    Action = json_to_action(DecodedData),
-    handle_action(Action, Req, State).
+    Rec = json_to_record(DecodedData),
+    handle_event(Rec, Req, State).
 
 
-handle_action(#action{type = <<"registerObject">>}, Req, State) ->
+handle_event(#memw_auth{} = A, Req, State) ->
+    handle_auth(A, Req, State);
+
+handle_event(A, Req, State=#state{hub=Hub}) ->
+    memw_session:send(Hub, A),
     {ok, Req, State}.
 
 
-%stream(<<"all_torrents">> = _Data, Req, State) ->
-%    Data = ?HUB:all_torrents(),
-%    Respond = [{'event', <<"dataLoadCompleted">>} 
-%              ,{'data', [{'rows', Data}]}
-%              ],
-%    EncodedRespond = jsx:term_to_json(Respond),
-%    {reply, EncodedRespond, Req, State};
-%
-%stream(<<"all_peers">> = _Data, Req, State) ->
-%    Data = memw_peers:all_peers(),
-%    Respond = [{'event', <<"peerDataLoadCompleted">>} 
-%              ,{'data', [{'rows', Data}]}
-%              ],
-%    EncodedRespond = jsx:term_to_json(Respond),
-%    {reply, EncodedRespond, Req, State};
-%
-%stream(Data, Req, State) ->
-%    DecodedData = jsx:json_to_term(Data),
-%    case proplists:get_value(<<"event">>, DecodedData) of
-%    <<"remove">> -> 
-%        Id = proplists:get_value(<<"id">>, DecodedData),
-%        true = is_number(Id),
-%        {reply, Data, Req, State};
-%
-%    <<"pause">> -> 
-%        Ids = proplists:get_value(<<"ids">>, DecodedData),
-%        lists:map(fun etorrent_ctl:pause/1, Ids),
-%        {reply, Data, Req, State};
-%
-%    <<"continue">> -> 
-%        Ids = proplists:get_value(<<"ids">>, DecodedData),
-%        lists:map(fun etorrent_ctl:continue/1, Ids),
-%        {reply, Data, Req, State};
-%
-%    <<"file_list">> ->
-%        %% Load file list
-%        TorrentId = proplists:get_value(<<"torrent_id">>, DecodedData),
-%        Parents   = proplists:get_value(<<"parent_ids">>, DecodedData),
-%
-%        Nodes = lists:map(fun(ParentId) ->
-%                Children = etorrent_io:tree_children(TorrentId, ParentId),
-%                [ {'parent_id', ParentId}
-%                , {'children', Children}
-%                ]
-%            end, Parents),
-%        
-%        Respond = [ {'event', <<"fileDataLoadCompleted">>} 
-%                  , {'data', [ {'torrent_id', TorrentId}
-%                             , {'nodes', Nodes}]}
-%                  ],
-%        EncodedRespond = jsx:term_to_json(Respond),
-%        {reply, EncodedRespond, Req, State};
-%
-%    <<"wish_list">> ->
-%        TorrentId = proplists:get_value(<<"torrent_id">>, DecodedData),
-%        {ok, Wishes} = etorrent_torrent_ctl:get_wishes(TorrentId),
-%
-%        EncodedRespond = encode_wishes(TorrentId, Wishes),
-%        {reply, EncodedRespond, Req, State};
-%
-%    <<"replace_wish_list">> ->
-%        TorrentId = proplists:get_value(<<"torrent_id">>, DecodedData),
-%        List = proplists:get_value(<<"list">>, DecodedData),
-%        Wishes = [[{ binary_to_existing_atom(K)
-%                   , if
-%                        is_binary(V) -> binary_to_existing_atom(V);
-%                        true -> V
-%                     end} 
-%                    || {K, V} <- X, K =/= <<"name">>] || X <- List],
-%        error_logger:info_msg("Set new wishes ~p for torrent ~B.",
-%            [Wishes, TorrentId]),
-%        {ok, Wishes1} = etorrent_torrent_ctl:set_wishes(TorrentId, Wishes),
-%        {ok, Req, State};
-%
-%    <<"wish_files">> ->
-%        TorrentId = proplists:get_value(<<"torrent_id">>, DecodedData),
-%        Fids      = proplists:get_value(<<"file_ids">>, DecodedData),
-%        {ok, NewWishes} = etorrent_torrent_ctl:wish_file(TorrentId, Fids),
-%        
-%        EncodedRespond = encode_wishes(TorrentId, NewWishes),
-%        {reply, EncodedRespond, Req, State};
-%
-%    <<"file_info">> ->
-%        %% Load tracks list
-%        TorrentId = proplists:get_value(<<"torrent_id">>, DecodedData),
-%        FileId    = proplists:get_value(<<"file_id">>, DecodedData),
-%        {ok, Req, State};
-%
-%    _ -> 
-%        {reply, Data, Req, State}
-%    end.
+%% First connect, no session
+handle_auth(#memw_auth{session_id=undefined, hash=Hash} = A, 
+    Req, State) ->
+    {ok, Hub} = memw_session:start(self(), Hash),
+    Ref = erlang:monitor(process, Hub),
+    State2 = State#state{
+        hub = Hub, hub_mon = Ref
+    },
+    {ok, Req, State2};
 
+%% Session was already created. Check a session id.
+handle_auth(#memw_auth{session_id=SessionId, hash=Hash} = A, 
+    Req, State) ->
+    {Success, State2} = 
+    try
+        Hub = memw_session:lookup_server(SessionId),
+        ok = memw_session:update_connection(Hub, self()),
+        Ref = erlang:monitor(process, Hub),
+        {true, State#state{hub = Hub, hub_mon = Ref}}
 
+    catch error:badarg ->
+        {false, State}
+    end,
+
+    %% Send directly
+    Cmd = fire_event(Hash, <<"authCheckResult">>, [{<<"success">>, Success}]),
+    Respond = jsx:term_to_json(Cmd),
+    {reply, Respond, Req, State2}.
 
 
 %% Called when a process recieved a mess from other erlang process.
 %% An other process calls ?MODULE:send/2, the bullet application recieves 
 %% a message and calls ?MODULE:info/3.
-info(_Info, Req, State) ->
-    {reply, <<>>, Req, State}.
-	
-%info({'diff_list', Rows}=_Info, Req, State) ->
-%    Respond = [{'event', <<"dataUpdated">>} 
-%              ,{'data', [{'rows', Rows}]}
-%              ],
-%    EncodedRespond = jsx:term_to_json(Respond),
-%    {reply, EncodedRespond, Req, State};
-%
-%info({'add_list', Rows}=_Info, Req, State) ->
-%    Respond = [{'event', <<"dataAdded">>} 
-%              ,{'data', [{'rows', Rows}]}
-%              ],
-%    EncodedRespond = jsx:term_to_json(Respond),
-%    {reply, EncodedRespond, Req, State};
-%
-%info({'delete_list', Rows}=_Info, Req, State) ->
-%    Respond = [{'event', <<"dataRemoved">>} 
-%              ,{'data', [{'rows', Rows}]}
-%              ],
-%    EncodedRespond = jsx:term_to_json(Respond),
-%    {reply, EncodedRespond, Req, State};
-%
-%info({'log_event', Mess}=_Info, Req, State) ->
-%    Respond = [{'event', <<"logEvent">>} 
-%              ,{'data', Mess}
-%              ],
-%    EncodedRespond = jsx:term_to_json(Respond),
-%    {reply, EncodedRespond, Req, State};
-%
-%info({'track_list', TorrentId, FileId, Props}=_Info, Req, State) ->
-%    Respond = [ {'event', <<"tracksDataLoadCompleted">>} 
-%              , {'data', [ {'torrent_id', TorrentId}
-%                         , {'file_id', FileId}
-%                         , {'rows', Props}]}
-%              ],
-%    EncodedRespond = jsx:term_to_json(Respond),
-%    {reply, EncodedRespond, Req, State}.
+info({command, Cmd}, Req, State) ->
+    Respond = jsx:term_to_json(Cmd),
+    {reply, Respond, Req, State}.
 
 
 terminate(_Req, _State) ->
@@ -189,3 +124,35 @@ terminate(_Req, _State) ->
 
 send(Pid, Mess) ->
     Pid ! Mess.
+
+send_command(Pid, Cmd) ->
+    send(Pid, {command, Cmd}).
+
+
+%%
+%% Helpers
+%%
+
+fire_event(Hash, EventType) ->
+    encode_action(<<"fireEvent">>, Hash, encode_event(EventType)).
+    
+fire_event(Hash, EventType, EventData) ->
+    encode_action(<<"fireEvent">>, Hash, encode_event(EventType, EventData)).
+
+add_listener(Hash, EventType) ->
+    encode_action(<<"addListener">>, Hash, encode_event(EventType)).
+
+
+encode_action(ActionType, Hash, EncodedEvent) ->
+    [ {<<"type">>, ActionType}
+    , {<<"hash">>, Hash}
+    , {<<"data">>, EncodedEvent}].
+
+encode_event(EventType) ->
+    [ {<<"type">>, EventType}].
+
+encode_event(EventType, EventData) ->
+    [ {<<"type">>, EventType}
+    , {<<"data">>, EventData}].
+
+

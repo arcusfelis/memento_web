@@ -1,15 +1,8 @@
-
-/**
- * The GUI definition of the qooxdoo unit test runner.
- */
 qx.Class.define("memento_web.BasicTable",
 {
   extend : qx.ui.table.Table,
 
 
-  /**
-   * @lint ignoreUndefined(qxc)
-   */
   construct : function(names)
   {
     // INIT TABLE MODEL
@@ -57,15 +50,19 @@ qx.Class.define("memento_web.BasicTable",
     tm.indexedSelection(n2p.id, sm);
     tm.addIndex(n2p.id);
 
-    // INIT EVENT HANDLERS
-    this.__eventHandlers =
-    {
+    var items = {
       "dataAdded"         : this.__onDataAdded,
       "dataRemoved"       : this.__onDataRemoved,
       "dataRemoveFailure" : this.__onDataRemoveFailure,
       "dataLoadCompleted" : this.__onDataLoadCompleted,
       "dataUpdated"       : this.__onDataUpdated
     };
+
+    for (var name in items)
+    {
+        var listener = items[name];
+        this.addListener(name, listener, this);
+    }
   },
 
   members :
@@ -431,6 +428,12 @@ qx.Class.define("memento_web.BasicTable",
   events :
   {
 
-    "tableRefreshed" : "qx.event.type.Event"
+    "tableRefreshed" : "qx.event.type.Event",
+
+    "dataAdded" : "qx.event.type.Data",
+    "dataRemoved" : "qx.event.type.Data",
+    "dataRemoveFailure" : "qx.event.type.Data",
+    "dataLoadCompleted" : "qx.event.type.Data",
+    "dataUpdated" : "qx.event.type.Data"
   }
 });

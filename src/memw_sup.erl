@@ -1,4 +1,3 @@
-
 -module(memw_sup).
 -behaviour(supervisor).
 
@@ -17,4 +16,5 @@ start_link() ->
 %% supervisor.
 
 init([]) ->
-	{ok, {{one_for_one, 10, 10}, []}}.
+    SessionSup = ?CHILD(memw_session_sup, worker),
+	{ok, {{one_for_one, 10, 10}, [SessionSup]}}.
